@@ -270,8 +270,10 @@ if (interestTypeSelect) {
 
 // Detailed Join Form WhatsApp Integration
 const detailedJoinForm = document.getElementById('detailedJoinForm');
+console.log('detailedJoinForm found:', detailedJoinForm);
 if (detailedJoinForm) {
     detailedJoinForm.addEventListener('submit', function(e) {
+        console.log('Form submit event triggered');
         e.preventDefault();
         
         // Get form data
@@ -294,46 +296,63 @@ if (detailedJoinForm) {
         const availabilityCheckboxes = document.querySelectorAll('input[name="availability[]"]:checked');
         const availability = Array.from(availabilityCheckboxes).map(cb => cb.value).join(', ');
         
+        console.log('Form data collected:', { firstName, lastName, email, phone, interestType, consent });
+        
         // Form validation
         const formInputs = this.querySelectorAll('input[required], select[required], textarea[required]');
         let isValid = true;
+        
+        console.log('Required inputs found:', formInputs.length);
         
         formInputs.forEach(input => {
             if (input.type === 'checkbox') {
                 if (!input.checked) {
                     input.parentElement.style.color = '#ef4444';
                     isValid = false;
+                    console.log('Checkbox not checked:', input.id);
                 } else {
                     input.parentElement.style.color = '';
                 }
             } else if (!input.value.trim()) {
                 input.style.borderColor = '#ef4444';
                 isValid = false;
+                console.log('Required field empty:', input.id);
             } else {
                 input.style.borderColor = '#e2e8f0';
             }
         });
         
+        console.log('Form validation result:', isValid);
+        
         if (!isValid) {
+            console.log('Form validation failed');
             showNotification('Please fill in all required fields and accept the consent.', 'error');
             return;
         }
         
+        console.log('Basic validation passed, checking email...');
+        
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
+            console.log('Email validation failed:', email);
             document.getElementById('email').style.borderColor = '#ef4444';
             showNotification('Please enter a valid email address.', 'error');
             return;
         }
         
+        console.log('Email validation passed, checking phone...');
+        
         // Phone validation
         const phoneRegex = /^[\d\s\-\+\(\)]+$/;
         if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+            console.log('Phone validation failed:', phone);
             document.getElementById('phone').style.borderColor = '#ef4444';
             showNotification('Please enter a valid phone number.', 'error');
             return;
         }
+        
+        console.log('All validations passed, creating WhatsApp message...');
         
         // Create WhatsApp message
         let whatsappMessage = `Hello! I would like to join your community of care.
@@ -382,11 +401,15 @@ How I want to join: ${interestType}`;
 
 Thank you!`;
         
+        console.log('WhatsApp message created:', whatsappMessage);
+        
         // WhatsApp business number (Sri Lankan format)
         const whatsappNumber = '94778540201'; // 077 854 0201 in international format
         
         // Create WhatsApp URL
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        console.log('WhatsApp URL:', whatsappURL);
         
         // Update button text and open WhatsApp
         const submitButton = this.querySelector('button[type="submit"]');
@@ -394,17 +417,58 @@ Thank you!`;
         submitButton.textContent = 'Opening WhatsApp...';
         submitButton.disabled = true;
         
+        console.log('About to open WhatsApp...');
+        
+        // Try to open WhatsApp immediately (better for popup blockers)
+        console.log('Opening WhatsApp with URL:', whatsappURL);
+        
+        // Method 1: Try window.open immediately
+        const whatsappWindow = window.open(whatsappURL, '_blank');
+        
+        // Method 2: If popup blocked, give user options
         setTimeout(() => {
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
+            if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed == 'undefined') {
+                console.log('Popup blocked, showing fallback options');
+                
+                // Create a modal with options
+                const fallbackModal = document.createElement('div');
+                fallbackModal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10000;
+                `;
+                
+                fallbackModal.innerHTML = `
+                    <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 400px; margin: 20px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">WhatsApp Redirect</h3>
+                        <p style="color: #666; margin-bottom: 20px;">Click the button below to open WhatsApp with your application details:</p>
+                        <a href="${whatsappURL}" target="_blank" style="display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 10px;">
+                            📱 Open WhatsApp
+                        </a>
+                        <br>
+                        <button onclick="this.parentElement.parentElement.remove()" style="background: #e74c3c; color: white; padding: 8px 20px; border: none; border-radius: 15px; margin-top: 15px; cursor: pointer;">
+                            Close
+                        </button>
+                    </div>
+                `;
+                
+                document.body.appendChild(fallbackModal);
+            }
             
             // Reset form and button
             this.reset();
             submitButton.textContent = originalText;
             submitButton.disabled = false;
             
-            showNotification('Redirecting to WhatsApp! Please send the message to complete your application.', 'success');
-        }, 1000);
+            showNotification('WhatsApp link created! If it didn\'t open automatically, please click the WhatsApp button.', 'success');
+        }, 500);
     });
 }
 
