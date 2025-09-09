@@ -292,24 +292,31 @@ if (detailedJoinForm) {
         const consent = document.getElementById('consent').checked;
         const newsletter = document.getElementById('newsletter').checked;
         
-        // Get availability checkboxes
+        // Get availability checkboxes (optional)
         const availabilityCheckboxes = document.querySelectorAll('input[name="availability[]"]:checked');
-        const availability = Array.from(availabilityCheckboxes).map(cb => cb.value).join(', ');
+        const availability = availabilityCheckboxes.length > 0 ? 
+            Array.from(availabilityCheckboxes).map(cb => cb.value).join(', ') : 
+            'Not specified';
         
         console.log('Form data collected:', { firstName, lastName, email, phone, interestType, consent });
         
-        // Form validation
+        // Form validation (excluding availability checkboxes)
         const formInputs = this.querySelectorAll('input[required], select[required], textarea[required]');
         let isValid = true;
         
         console.log('Required inputs found:', formInputs.length);
         
         formInputs.forEach(input => {
+            // Skip availability checkboxes from validation (they are optional)
+            if (input.name && input.name.includes('availability')) {
+                return;
+            }
+            
             if (input.type === 'checkbox') {
                 if (!input.checked) {
                     input.parentElement.style.color = '#ef4444';
                     isValid = false;
-                    console.log('Checkbox not checked:', input.id);
+                    console.log('Required checkbox not checked:', input.id);
                 } else {
                     input.parentElement.style.color = '';
                 }
@@ -326,7 +333,7 @@ if (detailedJoinForm) {
         
         if (!isValid) {
             console.log('Form validation failed');
-            showNotification('Please fill in all required fields and accept the consent.', 'error');
+            showNotification('Please fill in all required fields.', 'error');
             return;
         }
         
@@ -385,7 +392,7 @@ How I want to join: ${interestType}`;
             whatsappMessage += `\nSpecialization: ${specialization}`;
         }
         
-        if (availability) {
+        if (availability && availability !== 'Not specified') {
             whatsappMessage += `\nAvailability: ${availability}`;
         }
         
