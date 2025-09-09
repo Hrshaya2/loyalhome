@@ -66,6 +66,20 @@ body {
     font-weight: 700;
     color: var(--primary-teal);
     line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.nav-logo:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.nav-logo:visited,
+.nav-logo:link {
+    color: var(--primary-teal);
+    text-decoration: none;
 }
 
 .nav-logo img {
