@@ -277,20 +277,20 @@ if (detailedJoinForm) {
         e.preventDefault();
         
         // Get form data
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const dateOfBirth = document.getElementById('dateOfBirth').value;
-        const gender = document.getElementById('gender').value;
-        const address = document.getElementById('address').value.trim();
-        const interestType = document.getElementById('interestType').value;
-        const experience = document.getElementById('experience').value;
-        const specialization = document.getElementById('specialization').value.trim();
-        const message = document.getElementById('message').value.trim();
-        const hearAboutUs = document.getElementById('hearAboutUs').value;
-        const consent = document.getElementById('consent').checked;
-        const newsletter = document.getElementById('newsletter').checked;
+        const firstName = document.getElementById('firstName')?.value?.trim() || '';
+        const lastName = document.getElementById('lastName')?.value?.trim() || '';
+        const email = document.getElementById('email')?.value?.trim() || '';
+        const phone = document.getElementById('phone')?.value?.trim() || '';
+        const dateOfBirth = document.getElementById('dateOfBirth')?.value || '';
+        const gender = document.getElementById('gender')?.value || '';
+        const address = document.getElementById('address')?.value?.trim() || '';
+        const interestType = document.getElementById('interestType')?.value || '';
+        const experience = document.getElementById('experience')?.value || '';
+        const specialization = document.getElementById('specialization')?.value?.trim() || '';
+        const message = document.getElementById('message')?.value?.trim() || '';
+        const hearAboutUs = document.getElementById('hearAboutUs')?.value || '';
+        const consent = document.getElementById('consent')?.checked || false;
+        const newsletter = document.getElementById('newsletter')?.checked || false;
         
         // Get availability checkboxes (optional)
         const availabilityCheckboxes = document.querySelectorAll('input[name="availability[]"]:checked');
@@ -361,11 +361,11 @@ if (detailedJoinForm) {
         
         console.log('All validations passed, creating WhatsApp message...');
         
-        // Create WhatsApp message
-        let whatsappMessage = `Hello! I would like to join your community of care.
-
-*Personal Information:*
-Name: ${firstName} ${lastName}
+        // Test alert to confirm form is working
+        alert('Form validation passed! About to create WhatsApp message...');
+        
+        // Create simple WhatsApp message with just the data
+        let whatsappMessage = `Name: ${firstName} ${lastName}
 Email: ${email}
 Phone: ${phone}`;
 
@@ -381,8 +381,7 @@ Phone: ${phone}`;
             whatsappMessage += `\nAddress: ${address}`;
         }
 
-        whatsappMessage += `\n\n*Interest & Role:*
-How I want to join: ${interestType}`;
+        whatsappMessage += `\nInterest Type: ${interestType}`;
 
         if (experience) {
             whatsappMessage += `\nExperience: ${experience}`;
@@ -397,16 +396,12 @@ How I want to join: ${interestType}`;
         }
         
         if (message) {
-            whatsappMessage += `\n\n*About Me:*\n${message}`;
+            whatsappMessage += `\nMessage: ${message}`;
         }
         
         if (hearAboutUs) {
-            whatsappMessage += `\n\n*How I heard about you:* ${hearAboutUs}`;
+            whatsappMessage += `\nHow heard about us: ${hearAboutUs}`;
         }
-
-        whatsappMessage += `\n\nI have given my consent to be contacted and I'm excited to be part of your mission!
-
-Thank you!`;
         
         console.log('WhatsApp message created:', whatsappMessage);
         
@@ -418,6 +413,9 @@ Thank you!`;
         
         console.log('WhatsApp URL:', whatsappURL);
         
+        // Simple alert to show URL
+        alert(`WhatsApp URL created: ${whatsappURL.substring(0, 100)}...`);
+        
         // Update button text and open WhatsApp
         const submitButton = this.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -426,56 +424,23 @@ Thank you!`;
         
         console.log('About to open WhatsApp...');
         
-        // Try to open WhatsApp immediately (better for popup blockers)
-        console.log('Opening WhatsApp with URL:', whatsappURL);
+        // Simple window.open
+        const opened = window.open(whatsappURL, '_blank');
         
-        // Method 1: Try window.open immediately
-        const whatsappWindow = window.open(whatsappURL, '_blank');
+        if (opened) {
+            console.log('WhatsApp opened successfully');
+            alert('WhatsApp should have opened! Check for a new tab/window.');
+        } else {
+            console.log('Failed to open WhatsApp');
+            alert('Could not open WhatsApp automatically. Please copy the URL from console.');
+        }
         
-        // Method 2: If popup blocked, give user options
+        // Reset form and button after 2 seconds
         setTimeout(() => {
-            if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed == 'undefined') {
-                console.log('Popup blocked, showing fallback options');
-                
-                // Create a modal with options
-                const fallbackModal = document.createElement('div');
-                fallbackModal.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.8);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 10000;
-                `;
-                
-                fallbackModal.innerHTML = `
-                    <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 400px; margin: 20px;">
-                        <h3 style="color: #2c3e50; margin-bottom: 15px;">WhatsApp Redirect</h3>
-                        <p style="color: #666; margin-bottom: 20px;">Click the button below to open WhatsApp with your application details:</p>
-                        <a href="${whatsappURL}" target="_blank" style="display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 10px;">
-                            📱 Open WhatsApp
-                        </a>
-                        <br>
-                        <button onclick="this.parentElement.parentElement.remove()" style="background: #e74c3c; color: white; padding: 8px 20px; border: none; border-radius: 15px; margin-top: 15px; cursor: pointer;">
-                            Close
-                        </button>
-                    </div>
-                `;
-                
-                document.body.appendChild(fallbackModal);
-            }
-            
-            // Reset form and button
             this.reset();
             submitButton.textContent = originalText;
             submitButton.disabled = false;
-            
-            showNotification('WhatsApp link created! If it didn\'t open automatically, please click the WhatsApp button.', 'success');
-        }, 500);
+        }, 2000);
     });
 }
 
