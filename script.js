@@ -159,7 +159,7 @@ const joinForm = document.getElementById('joinForm');
 if (openJoinModalBtn) {
     openJoinModalBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        window.location.href = 'join.html';
+        scrollToBooking();
     });
 }
 
