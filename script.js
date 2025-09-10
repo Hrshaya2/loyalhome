@@ -702,8 +702,8 @@ if (document.getElementById('service-title')) {
                 },
                 {
                     icon: 'fas fa-graduation-cap',
-                    title: 'Qualified Nurses',
-                    description: 'All our nurses are licensed and experienced professionals.'
+                    title: 'Qualified Caregivers',
+                    description: 'All our caregivers are licensed and experienced professionals.'
                 },
                 {
                     icon: 'fas fa-heartbeat',
@@ -757,8 +757,8 @@ if (document.getElementById('service-title')) {
                     answer: 'Our skilled nursing includes wound care, medication administration, vital sign monitoring, injections, catheter care, and health assessments.'
                 },
                 {
-                    question: 'Are your nurses licensed?',
-                    answer: 'Yes, all our nurses are licensed registered nurses with extensive experience in home healthcare and continuing education.'
+                    question: 'Are your caregivers licensed?',
+                    answer: 'Yes, all our caregivers are licensed registered nurses with extensive experience in home healthcare and continuing education.'
                 },
                 {
                     question: 'How quickly can you start services?',
