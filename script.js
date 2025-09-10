@@ -758,7 +758,7 @@ if (document.getElementById('service-title')) {
                 },
                 {
                     question: 'Are your caregivers licensed?',
-                    answer: 'Yes, all our caregivers are licensed registered nurses with extensive experience in home healthcare and continuing education.'
+                    answer: 'Yes, all our caregivers are licensed registered caregivers with extensive experience in home healthcare and continuing education.'
                 },
                 {
                     question: 'How quickly can you start services?',
