@@ -781,9 +781,9 @@ if (document.getElementById('service-title')) {
                     text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Tharu Mandakini',
+                    name: 'Sriyanthi Peiris',
                     rating: '★★★★★',
-                    text: 'Highly recommended loyal ❤️ best service & staff'
+                    text: 'The care giver is excellent. very pleasant, and caring.'
                 }
             ]
         },
