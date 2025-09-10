@@ -901,6 +901,12 @@ body {
     max-width: 320px;
 }
 
+.footer-contact a {
+    text-decoration: none;
+    color: #e2e8f0;
+    transition: color 0.3s ease;
+}
+
 .footer-contact h3 {
     color: var(--primary-teal);
     font-size: 20px;
@@ -1055,6 +1061,13 @@ body {
     color: #cbd5e1;
     font-size: 14px;
     position: relative;
+}
+
+.footer-bottom a {
+    color: var(--primary-teal);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .footer-bottom::before {
@@ -2013,7 +2026,7 @@ html {
 .feature-item p {
     color: #4a5568;
     line-height: 1.6;
-    margin: 0;
+    margin-top: 20px;
 }
 
 /* FAQ Section */

@@ -688,12 +688,12 @@ if (document.getElementById('service-title')) {
     // Service data for service detail pages
     const serviceData = {
         'skilled-nursing': {
-            title: 'Skilled Nursing Care',
-            subtitle: 'Professional nursing care in the comfort of your home',
+            title: 'Skilled Caregivers',
+            subtitle: 'Professional Caregivers in the comfort of your home',
             image: 'images/services/SkilledNursing Care.jpg',
             icon: 'fas fa-user-nurse',
-            description: 'Our registered nurses provide comprehensive medical care including wound care, medication administration, and health monitoring.',
-            overview: 'Our skilled nursing services bring hospital-quality care directly to your home. Our licensed registered nurses are trained to handle complex medical needs while ensuring patient comfort and family peace of mind.',
+            description: 'Our skilled caregivers provide comprehensive medical care including wound care, medication administration, and health monitoring.',
+            overview: 'Our skilled caregiving services bring hospital-quality care directly to your home. Our licensed registered nurses are trained to handle complex medical needs while ensuring patient comfort and family peace of mind.',
             benefits: [
                 {
                     icon: 'fas fa-home',
@@ -718,27 +718,27 @@ if (document.getElementById('service-title')) {
             ],
             process: [
                 {
-                    title: 'Initial Assessment',
-                    description: 'Comprehensive evaluation of your medical needs and condition.'
+                    title: 'Condition Assessment',
+                    description: 'Thorough evaluation of your chronic condition and current management.'
                 },
                 {
-                    title: 'Care Planning',
-                    description: 'Development of a detailed nursing care plan.'
+                    title: 'Goal Setting',
+                    description: 'Establishing realistic health goals and milestones.'
                 },
                 {
-                    title: 'Service Delivery',
-                    description: 'Professional nursing care according to your schedule.'
+                    title: 'Care Implementation',
+                    description: 'Regular monitoring, education, and support services.'
                 },
                 {
-                    title: 'Ongoing Monitoring',
-                    description: 'Regular assessment and care plan updates.'
+                    title: 'Progress Review',
+                    description: 'Regular evaluation and adjustment of your care plan.'
                 }
             ],
             features: [
                 {
                     icon: 'fas fa-syringe',
                     title: 'Injection Services',
-                    description: 'Safe administration of various types of injections and IV medications.'
+                    description: 'Safe administration of various types of injections and IM medications.'
                 },
                 {
                     icon: 'fas fa-thermometer-half',
@@ -771,19 +771,19 @@ if (document.getElementById('service-title')) {
             ],
             reviews: [
                 {
-                    name: 'John Davis',
-                    rating: '★★★★★',
-                    text: 'The skilled nursing team provided excellent care during my recovery. Their professionalism gave us great peace of mind.'
+                    name: 'Madhu Vithanage',
+                    rating: '★★★★',
+                    text: 'Highly recommend this care service even for critically ill or post surgery patients. Mature and well trained staff. Trustworthy caretakers. Highly satisfied service.'
                 },
                 {
-                    name: 'Susan Miller',
+                    name: 'Shane Rajapaksha',
                     rating: '★★★★★',
-                    text: 'Outstanding care! The nurses are knowledgeable, gentle, and always professional. Highly recommend their services.'
+                    text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Robert Wilson',
+                    name: 'Tharu Mandakini',
                     rating: '★★★★★',
-                    text: 'Excellent nursing care. They helped me avoid readmission to the hospital and recover much faster at home.'
+                    text: 'Highly recommended loyal ❤️ best service & staff'
                 }
             ]
         },
@@ -818,20 +818,20 @@ if (document.getElementById('service-title')) {
             ],
             process: [
                 {
-                    title: 'Initial Assessment',
-                    description: 'Comprehensive evaluation of current medications and health status.'
+                    title: 'Condition Assessment',
+                    description: 'Thorough evaluation of your chronic condition and current management.'
                 },
                 {
-                    title: 'Plan Development',
-                    description: 'Creating a personalized medication management plan.'
+                    title: 'Goal Setting',
+                    description: 'Establishing realistic health goals and milestones.'
                 },
                 {
-                    title: 'Implementation',
-                    description: 'Regular medication administration and monitoring.'
+                    title: 'Care Implementation',
+                    description: 'Regular monitoring, education, and support services.'
                 },
                 {
-                    title: 'Review & Adjust',
-                    description: 'Ongoing assessment and plan adjustments as needed.'
+                    title: 'Progress Review',
+                    description: 'Regular evaluation and adjustment of your care plan.'
                 }
             ],
             features: [
@@ -871,19 +871,19 @@ if (document.getElementById('service-title')) {
             ],
             reviews: [
                 {
-                    name: 'Maria Thompson',
-                    rating: '★★★★★',
-                    text: 'The medication management service has been a lifesaver for our family. The nurses are so careful and professional.'
+                    name: 'Madhu Vithanage',
+                    rating: '★★★★',
+                    text: 'Highly recommend this care service even for critically ill or post surgery patients. Mature and well trained staff. Trustworthy caretakers. Highly satisfied service.'
                 },
                 {
-                    name: 'David Chen',
+                    name: 'Shane Rajapaksha',
                     rating: '★★★★★',
-                    text: 'Excellent service! They helped me organize all my medications and now I feel confident about my treatment plan.'
+                    text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Eleanor Rodriguez',
+                    name: 'Tharu Mandakini',
                     rating: '★★★★★',
-                    text: 'Professional and caring service. The nurse explains everything clearly and makes sure I understand each medication.'
+                    text: 'Highly recommended loyal ❤️ best service & staff'
                 }
             ]
         },
@@ -971,19 +971,19 @@ if (document.getElementById('service-title')) {
             ],
             reviews: [
                 {
-                    name: 'Sarah Williams',
-                    rating: '★★★★★',
-                    text: 'The chronic disease management program helped me understand my diabetes better and improved my quality of life significantly.'
+                    name: 'Madhu Vithanage',
+                    rating: '★★★★',
+                    text: 'Highly recommend this care service even for critically ill or post surgery patients. Mature and well trained staff. Trustworthy caretakers. Highly satisfied service.'
                 },
                 {
-                    name: 'James Peterson',
+                    name: 'Shane Rajapaksha',
                     rating: '★★★★★',
-                    text: 'Excellent support for my heart condition. The nurses are very knowledgeable and helped me manage my medications better.'
+                    text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Mary Johnson',
+                    name: 'Tharu Mandakini',
                     rating: '★★★★★',
-                    text: 'Great program! They taught me so much about managing my COPD. I feel more confident about my health now.'
+                    text: 'Highly recommended loyal ❤️ best service & staff'
                 }
             ]
         },
@@ -1071,19 +1071,19 @@ if (document.getElementById('service-title')) {
             ],
             reviews: [
                 {
-                    name: 'Robert Johnson',
-                    rating: '★★★★★',
-                    text: 'The rehabilitation support helped me regain my independence after my stroke. The team was incredibly patient and encouraging.'
+                    name: 'Madhu Vithanage',
+                    rating: '★★★★',
+                    text: 'Highly recommend this care service even for critically ill or post surgery patients. Mature and well trained staff. Trustworthy caretakers. Highly satisfied service.'
                 },
                 {
-                    name: 'Linda Martinez',
+                    name: 'Shane Rajapaksha',
                     rating: '★★★★★',
-                    text: 'Excellent rehabilitation program. They helped me get back on my feet after surgery. Very professional and caring staff.'
+                    text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Thomas Anderson',
+                    name: 'Tharu Mandakini',
                     rating: '★★★★★',
-                    text: 'Great support during my recovery. The therapists are skilled and really understand how to motivate patients.'
+                    text: 'Highly recommended loyal ❤️ best service & staff'
                 }
             ]
         },
@@ -1171,19 +1171,19 @@ if (document.getElementById('service-title')) {
             ],
             reviews: [
                 {
-                    name: 'Linda Martinez',
-                    rating: '★★★★★',
-                    text: 'The wound care team was amazing. My surgical wound healed perfectly with their expert care and attention.'
+                    name: 'Madhu Vithanage',
+                    rating: '★★★★',
+                    text: 'Highly recommend this care service even for critically ill or post surgery patients. Mature and well trained staff. Trustworthy caretakers. Highly satisfied service.'
                 },
                 {
-                    name: 'George Thompson',
+                    name: 'Shane Rajapaksha',
                     rating: '★★★★★',
-                    text: 'Excellent wound care service. They healed my diabetic ulcer that had been problematic for months.'
+                    text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Patricia Davis',
+                    name: 'Tharu Mandakini',
                     rating: '★★★★★',
-                    text: 'Professional and gentle care. The nurses explained everything and my wound healed faster than expected.'
+                    text: 'Highly recommended loyal ❤️ best service & staff'
                 }
             ]
         },
@@ -1271,19 +1271,19 @@ if (document.getElementById('service-title')) {
             ],
             reviews: [
                 {
-                    name: 'Michael Brown',
-                    rating: '★★★★★',
-                    text: 'The physiotherapy sessions at home were so convenient and effective. I regained my strength much faster than expected.'
+                    name: 'Madhu Vithanage',
+                    rating: '★★★★',
+                    text: 'Highly recommend this care service even for critically ill or post surgery patients. Mature and well trained staff. Trustworthy caretakers. Highly satisfied service.'
                 },
                 {
-                    name: 'Jennifer Wilson',
+                    name: 'Shane Rajapaksha',
                     rating: '★★★★★',
-                    text: 'Excellent physiotherapy service. The therapist was knowledgeable and helped me recover from my knee surgery completely.'
+                    text: 'I cannot imagine how i thank to this team. From the very first day, they treated our family member with kindness, dignity, and patience. Their professionalism was matched by genuine warmth, making a difficult time so much easier for us.'
                 },
                 {
-                    name: 'Carlos Rodriguez',
+                    name: 'Tharu Mandakini',
                     rating: '★★★★★',
-                    text: 'Great home physiotherapy service. They helped me with my back pain and taught me exercises to prevent future problems.'
+                    text: 'Highly recommended loyal ❤️ best service & staff'
                 }
             ]
         }
