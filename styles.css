@@ -2654,6 +2654,7 @@ html {
 
 /* About Page Styles */
 .about-hero {
+    margin-top: 80px;
     padding: 120px 0 80px;
     background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-gradient-light) 100%);
 }
