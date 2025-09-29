@@ -1,0 +1,77 @@
+# Enable URL Rewriting
+RewriteEngine On
+
+# Handle index page first - redirect /index to root and index.html to root
+RewriteRule ^index(.html)?/?$ / [R=301,L]
+
+# Specific redirects for your pages (external redirect from .html to clean URL)
+RewriteRule ^about\.html$ /about [R=301,L]
+RewriteRule ^join\.html$ /join [R=301,L] 
+RewriteRule ^service-detail\.html(.*)$ /service-detail$1 [R=301,L]
+
+# General rule for any other .html files (catches any missed ones)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^\s]*?)\.html[\s?] [NC]
+RewriteCond %1 !^(index)$
+RewriteRule ^ /%1? [R=301,L]
+
+# Internal rewrite from clean URL to .html file
+# Handle specific pages first
+RewriteRule ^about/?$ about.html [L]
+RewriteRule ^join/?$ join.html [L]
+RewriteRule ^service-detail(.*)$ service-detail.html$1 [L]
+
+# General rule for other clean URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^.]+)/?$ $1.html [L]
+
+# Security Settings
+# Prevent access to sensitive files
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Prevent access to backup files
+<FilesMatch "\.(bak|backup|old|tmp)$">
+    Require all denied
+</FilesMatch>
+
+# Set proper MIME types
+AddType text/css .css
+AddType application/javascript .js
+AddType image/x-icon .ico
+
+# Enable compression for better performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Cache control for static assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# Error page handling (optional)
+# ErrorDocument 404 /404.html
+
+# Force HTTPS (uncomment if you have SSL certificate)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
