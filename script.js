@@ -577,7 +577,7 @@ const aboutReadMoreBtn = document.querySelector('.about-btn');
 if (aboutReadMoreBtn) {
     aboutReadMoreBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        window.location.href = 'about.html';
+        window.location.href = 'about';
     });
 }
 
